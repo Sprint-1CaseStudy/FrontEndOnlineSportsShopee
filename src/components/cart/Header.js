@@ -15,8 +15,9 @@ class Header extends Component {
                 <header>
                     <nav class="navbar navbar-light " style={{backgroundColor: '#e3f2fd'}}>
                         <h5 style={{ marginLeft:'30px'}}>OnlineSportsShopee</h5>
-                        <a class="nav-item nav-link" href="/products" style={{ marginLeft:'600px'}}><h5>Cart</h5></a>
-                        <a class="nav-item nav-link" href="/customer" style={{ marginRight:'60px' }}><h5>Orders</h5></a>
+                        <a class="nav-item nav-link" href="/" style={{ marginLeft:'600px'}}><h5>Home</h5></a>
+                        <a class="nav-item nav-link" href="/cart" style={{ marginLeft:'10px'}}><h5>Cart</h5></a>
+                        <a class="nav-item nav-link" href="/order" style={{ marginRight:'60px' }}><h5>Orders</h5></a>
                     </nav>
                 </header>
             </div>
