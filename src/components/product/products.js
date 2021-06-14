@@ -1,5 +1,5 @@
 import React , {Component } from 'react';
-import CartService from '../../Services/CartDetails';
+import CartService from '../../Services/CartService';
 import ProductService from '../../Services/ProductService';
 
 class Product extends Component {
