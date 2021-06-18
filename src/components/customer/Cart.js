@@ -1,5 +1,6 @@
 import React , {Component } from 'react';
 import CartService from '../../Services/CartService';
+import CustomerNav from '../navBar/customerNav';
 
 class Home extends Component {
 
@@ -18,15 +19,30 @@ class Home extends Component {
         });
     }
 
+    checkoutCart(){
+        let amount=0;
+        this.state.cartList.map(cartdata => amount += cartdata.total)
+        window.sessionStorage.setItem("cartamount",amount);
+        if(sessionStorage.cartamount){
+            this.props.history.push('/addresses');
+        }
+    }
+
     componentDidMount(){
-        CartService.getCartdetails().then((res) => {
-            this.setState({ cartList: res.data});
-        });
+        if(sessionStorage.custId){
+            CartService.getCartdetails().then((res) => {
+                this.setState({ cartList: res.data});
+            });
+        } else{
+            this.props.history.push('/');
+        }
     }
 
     render()
     {
         return(
+        <div>
+            <CustomerNav />   
             <div className = "container">
                 <h2 style={{ marginBottom:'20px'}}>Cart</h2>
                 <div className = "row">
@@ -50,7 +66,7 @@ class Home extends Component {
                                              <td> {cartdata.quantity}</td>
                                              <td> {cartdata.total}</td>
                                              <td>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteCart(cartdata.id)} className="btn btn-danger">Delete </button>
+                                                <button style={{marginLeft: "10px"}} onClick={ () => this.deleteCart(cartdata.id)} className="btn btn-danger">Delete </button>
                                              </td>
                                         </tr>
                                     )
@@ -58,7 +74,9 @@ class Home extends Component {
                             </tbody>
                         </table>
                  </div>
+                 <button style={{marginRight:'30px'}} onClick={ () => this.checkoutCart()} className="btn btn-success">Proceed </button>
             </div>
+        </div>
         );
     }
 }

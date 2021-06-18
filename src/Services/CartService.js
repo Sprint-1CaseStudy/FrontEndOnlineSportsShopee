@@ -2,15 +2,17 @@ import axios from 'axios';
 
 const Cart_API_BASE_URL = "http://localhost:8088//onlinesportshopee/cart";
 
+var custId = sessionStorage.getItem("custId");
+
 class CartService {
 
     addToCart(prodId)
     {                                           
-        return axios.post(Cart_API_BASE_URL + '/addtocart/'+ 101 + '/' + prodId );
+        return axios.post(Cart_API_BASE_URL + '/addtocart/'+ custId + '/' + prodId );
     }
 
     getCartdetails(){
-        return axios.get(Cart_API_BASE_URL + '/getCartDetails/'+ 101 );
+        return axios.get(Cart_API_BASE_URL + '/getCartDetails/'+ custId );
     }
 
     deleteCart(cartId){

@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
 
-        this.state = {
-                 
-        }
-    }
+class customerNav extends Component {
 
     render() {
         return (
@@ -15,9 +9,11 @@ class Header extends Component {
                 <header>
                     <nav class="navbar navbar-light " style={{backgroundColor: '#e3f2fd'}}>
                         <h5 style={{ marginLeft:'30px'}}>OnlineSportsShopee</h5>
-                        <a class="nav-item nav-link" href="/" style={{ marginLeft:'600px'}}><h5>Home</h5></a>
+                        <a class="nav-item nav-link" href="/home" style={{ marginLeft:'300px'}}><h5>Home</h5></a>
                         <a class="nav-item nav-link" href="/cart" style={{ marginLeft:'10px'}}><h5>Cart</h5></a>
-                        <a class="nav-item nav-link" href="/order" style={{ marginRight:'60px' }}><h5>Orders</h5></a>
+                        <a class="nav-item nav-link" href="/order" style={{ marginLeft:'10px'}}><h5>Orders</h5></a>
+                        <a class="nav-item nav-link" href="/view-Customer" style={{ marginLeft:'10px'}}><h5>Profile</h5></a>
+                        <a class="nav-item nav-link" href="/" style={{ marginRight:'30px' }}><h5>Signout</h5></a>
                     </nav>
                 </header>
             </div>
@@ -25,4 +21,4 @@ class Header extends Component {
     }
 }
 
-export default Header
+export default customerNav

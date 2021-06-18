@@ -12,9 +12,14 @@ class ViewProduct extends Component {
     }
 
     componentDidMount(){
-        ProductService.getProductById(this.state.id).then( res => {
-            this.setState({product: res.data});
-        })
+        if(sessionStorage.custId){
+            ProductService.getProductById(this.state.id).then( res => {
+                this.setState({product: res.data});
+            });
+        } else{
+            this.props.history.push('/');
+        }
+        
     }
 
     render() {

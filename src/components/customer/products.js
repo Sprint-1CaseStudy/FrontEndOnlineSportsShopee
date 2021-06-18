@@ -1,6 +1,7 @@
 import React , {Component } from 'react';
 import CartService from '../../Services/CartService';
 import ProductService from '../../Services/ProductService';
+import CustomerNav from '../navBar/customerNav';
 
 class Product extends Component {
 
@@ -18,7 +19,7 @@ class Product extends Component {
     addtoCart(id){
         CartService.addToCart(id).then(res => { 
             console.log(res);
-            this.props.history.push('/'); 
+            this.props.history.push('/home'); 
         });
     }
 
@@ -27,14 +28,21 @@ class Product extends Component {
     }
 
     componentDidMount(){
-        ProductService.getAllProducts().then( res => {
-            this.setState({products: res.data});
-        });
+        if(sessionStorage.custId){
+            ProductService.getAllProducts().then( res => {
+                this.setState({products: res.data});
+            });
+        } else{
+            this.props.history.push('/');
+        }
     }
 
     render()
     {
         return(
+        <div>
+                <CustomerNav />
+
             <div className = "container">
                 
                 <h2 style={{ marginBottom:'20px'}}>Product List</h2>
@@ -67,6 +75,7 @@ class Product extends Component {
                         </table>
                  </div>
             </div>
+        </div>
         );
     }
 }
